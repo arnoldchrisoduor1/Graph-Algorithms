@@ -1,14 +1,13 @@
-FROM bitnami/spark:2.4.0
+FROM bde2020/spark-base:2.4.0-hadoop2.7
 
 USER root
 
-# Installing Python and pip
+# Install Python and pip
 RUN apt-get update && \
-    apt-get install -y python3-pip && \
+    apt-get install -y python3 python3-pip && \
     ln -s /usr/bin/python3 /usr/bin/python
 
-# Installing PySpark and GraphFrames dependacies.
+# Install PySpark and GraphFrames
 RUN pip3 install pyspark==2.4.0 graphframes
 
-#setting environment variables.
 ENV PYSPARK_PYTHON=python3
